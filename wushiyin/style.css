@@ -103,18 +103,22 @@ body::before {
   right: 0;
   bottom: 0;
   transform-style: preserve-3d;
-  perspective: 100px;
+  perspective: 200px;
   transform-origin: center;
 }
 
-.row .row-item .item-texts:hover div.a {
-  animation: showA 0.4s ease forwards;
-  -webkit-animation: showA 0.4s ease forwards;
+.row .row-item:hover {
+  z-index: 99;
 }
 
-.row .row-item .item-texts:hover div.b {
-  animation: showB 0.4s ease forwards;
-  -webkit-animation: showB 0.4s ease forwards;
+.row .row-item:hover .item-texts div.a {
+  animation: showA 0.8s ease forwards;
+  -webkit-animation: showA 0.8s ease forwards;
+}
+
+.row .row-item:hover .item-texts div.b {
+  animation: showB 0.8s ease forwards;
+  -webkit-animation: showB 0.8s ease forwards;
 }
 
 .row .row-item .item-texts > div {
@@ -133,14 +137,14 @@ body::before {
 
 .row .row-item .item-texts > div.a {
   background-color: rgba(214, 182, 171, 0.8);
-  animation: hideA 0.4s ease forwards;
-  -webkit-animation: hideA 0.4s ease forwards;
+  animation: hideA 0.8s ease forwards;
+  -webkit-animation: hideA 0.8s ease forwards;
 }
 
 .row .row-item .item-texts > div.b {
   background-color: rgba(206, 235, 253, 0.8);
-  animation: hideB 0.4s ease forwards;
-  -webkit-animation: hideB 0.4s ease forwards;
+  animation: hideB 0.8s ease forwards;
+  -webkit-animation: hideB 0.8s ease forwards;
 }
 
 @keyframes showA {
