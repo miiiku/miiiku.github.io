@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Nixie+One|Raleway:200');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+.main {
+  color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3E423A;
+  font-family: 'Nixie One', cursive;
+}
+
+.item-box {
+  margin: 20px;
+}
+
+.item-box .circle {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-box .circle-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: rotate(-90deg);
+}
+
+.item-box .percent .percent-int {
+  font-size: 1.5rem;
+}
+
+.item-box:nth-of-type(1) .circle__progress { stroke: blueviolet; }
+.item-box:nth-of-type(2) .circle__progress { stroke: deeppink; }
+.item-box:nth-of-type(3) .circle__progress { stroke: coral; }
+.item-box:nth-of-type(4) .circle__progress { stroke: aquamarine; }
+
+.circle__progress {
+  fill: none;
+  stroke-width: 5;
+  stroke-opacity: 0.3;
+  stroke-linecap: round;
+}
+
+.circle__progress--fill {
+  --initialStroke: 0;
+  --transitionDuration: 0ms;
+  stroke-opacity: 1;
+  stroke-dasharray: var(--initialStroke);
+  stroke-dashoffset: var(--initialStroke);
+  transition: stroke-dashoffset var(--transitionDuration) ease;
+}
+
+.item-box .title {
+  text-align: center;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
