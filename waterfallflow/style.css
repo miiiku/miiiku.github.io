@@ -1,0 +1,91 @@
+* {
+  box-sizing: content-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e1e1e1;
+}
+
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 20px;
+  width: 1200px;
+  /* css 瀑布流布局的缺点，需要手动计算出容器的高度 */
+  height: 960px;
+  margin: auto;
+  counter-reset: items;
+}
+
+.item-box {
+  position: relative;
+  width: 18%;
+  margin: 1%;
+  background-color: indianred;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.item-box::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  counter-increment: items;
+  content: counter(items);
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #cccccc;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.item-box:hover::after {
+  color: transparent;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.item-box .bg {
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.item-box .bg img {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 单独设置其中一些内容块的高度 产生高低错落感 */
+.item-box:nth-of-type(3n) .bg { padding-bottom: 120%; }
+.item-box:nth-of-type(2n) .bg { padding-bottom: 140%; }
+
+/* 单独定义内容块排序优先级，让其横向排序 */
+.item-box:nth-of-type(5n+1) { order: 1; }
+.item-box:nth-of-type(5n+2) { order: 2; }
+.item-box:nth-of-type(5n+3) { order: 3; }
+.item-box:nth-of-type(5n+4) { order: 4; }
+.item-box:nth-of-type(5n)   { order: 5; }
+
+/* 强制使内容块分列 防止内容错位偏移 */
+.item-line {
+  flex-basis: 100%;
+  height: 100%;
+  width: 0;
+}
+
+.item-line:nth-of-type(1) { order: 1; }
+.item-line:nth-of-type(2) { order: 2; }
+.item-line:nth-of-type(3) { order: 3; }
+.item-line:nth-of-type(4) { order: 4; }
