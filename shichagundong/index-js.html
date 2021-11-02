@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .section-item {
+      width: 100vw;
+      height: 45vh;
+      position: relative;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .section-item__block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 120%;
+      background-repeat: no-repeat;
+      background-position: center 0;
+      transform: translate3d(0, 0, 0);
+      will-change: background-position;
+    }
+
+    .section-item__block::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.35);
+      transition: background-color 0.3s ease;
+    }
+
+    .section-item:hover .section-item__block::before {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .section-item__text {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Long Cang', cursive;
+      color: #F1F1F1;
+    }
+
+    .section-item__text .text-title {
+      font-size: 24px;
+      font-weight: bolder;
+      margin-bottom: 20px;
+    }
+
+    .section-item:nth-child(1n) .section-item__block {
+      background-image: url('./images/1.jpg');
+    }
+
+    .section-item:nth-child(2n) .section-item__block {
+      background-image: url('./images/2.jpg');
+    }
+
+    .section-item:nth-child(3n) .section-item__block {
+      background-image: url('./images/3.jpg');
+    }
+
+    .section-item:nth-child(4n) .section-item__block {
+      background-image: url('./images/4.jpg');
+    }
+
+    .section-item:nth-child(5n) .section-item__block {
+      background-image: url('./images/5.jpg');
+    }
+
+    .section-item:nth-child(6n) .section-item__block {
+      background-image: url('./images/6.jpg');
+    }
+  </style>
+</head>
+
+<body>
+  <section class="section-item">
+    <div class="section-item__block" data-index="1"></div>
+    <div class="section-item__text">
+      <div class="text-title">「四月是你的谎言」</div>
+      <div class="text-desc">我在盛开的樱花下遇见你，从此命运不再属于自己。</div>
+    </div>
+  </section>
+  <section class="section-item">
+    <div class="section-item__block" data-index="2"></div>
+    <div class="section-item__text">
+      <div class="text-title">「言叶之庭」</div>
+      <div class="text-desc">每晚临睡前 每天睁开眼的瞬间 不知不觉 我都在祈盼雨天 祈盼雨天 祈盼和那个人 再次相会</div>
+    </div>
+  </section>
+  <section class="section-item">
+    <div class="section-item__block" data-index="3"></div>
+    <div class="section-item__text">
+      <div class="text-title">「你的名字」</div>
+      <div class="text-desc">黄昏，不是白昼亦不是夜晚，是我努力却看不清你的脸。</div>
+    </div>
+  </section>
+  <section class="section-item">
+    <div class="section-item__block" data-index="4"></div>
+    <div class="section-item__text">
+      <div class="text-title">「天气之子」</div>
+      <div class="text-desc">天气真的是很不可思议，光只是天空的模样就让人感动不已。</div>
+    </div>
+  </section>
+  <section class="section-item">
+    <div class="section-item__block" data-index="5"></div>
+    <div class="section-item__text">
+      <div class="text-title">「K-ON！」</div>
+      <div class="text-desc">重要的，珍惜的，一直在身边，一旦成为理所当然，就难以发现</div>
+    </div>
+  </section>
+  <section class="section-item">
+    <div class="section-item__block" data-index="6"></div>
+    <div class="section-item__text">
+      <div class="text-title">「CLANNAD」</div>
+      <div class="text-desc">我也很没用，但是两个人一起的话，就会变得很坚强。</div>
+    </div>
+  </section>
+
+  <script>
+    const wh = window.innerHeight
+    const sectionBlock = Array.from(document.querySelectorAll('.section-item__block'))
+    window.addEventListener('scroll', function () {
+      sectionBlock.forEach(el => {
+        const { bottom, top, height } = el.getBoundingClientRect()
+        if (bottom <= 0 || top >= wh) return
+        const y = document.documentElement.scrollTop * 0.28
+        el.style.backgroundPosition = `center -${y}px`
+      })
+    })
+  </script>
+</body>
+
+</html>

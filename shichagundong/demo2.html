@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .demo2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: #ccc;
+    }
+    .demo2 .container {
+      perspective: 500px;
+      border: 1px solid black;
+    }
+    .demo2 .transformed {
+      transform-style: preserve-3d;
+      transform: rotateY(50deg);
+      background-color: blue;
+    }
+    .demo2 .child {
+      transform-style: preserve-3d;
+      /* 不加会现实不正确 */
+      transform: translate3d(0, 0, 0);
+    }
+    .demo2 .inner {
+      transform-origin: top left;
+      transform: rotateX(40deg);
+      background-color: lime;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo2">
+    <div class="container">
+      <div class="transformed">
+        <div class="child">
+          <div class="inner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
