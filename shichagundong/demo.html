@@ -34,6 +34,15 @@
       z-index: -1;
     }
 
+    .img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+      transform: translateZ(-40px) scale(1.12);
+      z-index: -1;
+    }
+
     .text {
       position: relative;
       display: flex;
@@ -72,9 +81,11 @@
   </style>
 </head>
 <body>
-  <div class="bg" style="background-image: url(./images/1.jpg);"></div>
+  <img class="img" src="./images/1.jpg" alt="" srcset="">
+  <!-- <div class="bg" style="background-image: url(./images/1.jpg);"></div> -->
   <div class="text">CONSOLE.LOG SUKOSHI</div>
-  <div class="bg" style="background-image: url(./images/2.jpg);"></div>
+  <img class="img" src="./images/2.jpg" alt="" srcset="">
+  <!-- <div class="bg" style="background-image: url(./images/2.jpg);"></div> -->
   <div class="test1"></div>
   <div class="test2"></div>
 </body>
